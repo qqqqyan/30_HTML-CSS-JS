@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="title">
+        <span>Update CSS Variables with</span>
+        <span id="tlcolor"> JS</span>
+    </h1>
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+        <input type="range" id="spacing" min="10" max="200" value="10">
+        <label for="blur">Blur:</label>
+        <input type="range" id="blur" min="0" max="25" value="10">
+        <label for="color">Base Color:</label>
+        <input type="color" id="color" value="#8aa8af">
+    </div>
+    <div id="info">
+        img { padding: 10px; filter: blur(10px); background: #8aa8af; }
+    </div>
+    <br>
+    <div>
+        <img src="./staron.png">
+    </div>
+
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: #193549;
+            /* 让divs水平居中并且每行只有1个div */
+            /* 如果要让div水平和垂直居中，并且每行只有一个div呢？ */
+            text-align: center;
+        }
+
+        .title {
+            color: white;
+        }
+
+        #tlcolor {
+            color: #8aa8af;
+        }
+
+        label {
+            color: white;
+            font-size: 22px;
+            font-weight: 100;
+        }
+
+        input {
+            width: 100px;
+        }
+
+        #info {
+            color: white;
+            font-size: 18px;
+            font-weight: 100;
+        }
+
+        img {
+            width: 200px;
+            background-color: #8aa8af;
+            padding: 10px;
+            filter: blur(10px);
+        }
+    </style>
+
+    <script type="module">
+        import { changeValue } from "./index.js";
+        changeValue();
+    </script>
+</body>
+
+</html>

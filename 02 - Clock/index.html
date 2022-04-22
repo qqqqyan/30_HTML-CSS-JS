@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="margin: 0px;">
+    <div class="container">
+        <div class="clock"></div>
+        <div class="hand hour-hand"></div>
+        <div class="hand minute-hand"></div>
+        <div class="hand second-hand"></div>
+        <div class="point"></div>
+    </div>
+
+    <style>
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            /* 设置全屏的关键点————对body设置最小高度，且单位为vh */
+            min-height: 100vh;
+            background-image: url(background.jpg);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 如何使container里面的div重叠，并且稍稍上下移动div？ */
+        /* absolute + Z-index + top/bottom/left/right */
+        .clock {
+            width: 30rem;
+            height: 30rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, .4);
+            border-radius: 50%;
+            border: 20px solid white;
+            /* 逗号隔开多个阴影，inset是内部阴影，样式可以去找 */
+            box-shadow:
+                0 0 2px 4px rgba(0, 0, 0, 0.1),
+                inset 0 0 1px 2px #EFEFEF,
+                inset 0 0 30px black,
+                0 0 10px 3px rgba(0, 0, 0, 0.2);
+            position: absolute;
+        }
+
+        .hand {
+            box-shadow:
+                0 0 0 .1px #fff,
+                0 0 0 1px rgba(0, 0, 0, 0.1),
+                0 0 8px rgba(0, 0, 0, 0.4),
+                2px 5px 1px rgba(0, 0, 0, .5);
+            position: absolute;
+            /* 绝对位置的bottom以父元素为准，50%居中 */
+            bottom: 50%;
+            transform-origin: bottom;
+        }
+
+        .hour-hand {
+            width: 10px;
+            height: 120px;
+            z-index: 1;
+            border-top-right-radius: .5em;
+            border-top-left-radius: .5em;
+            background-color: white;
+        }
+
+        .minute-hand {
+            width: 5px;
+            height: 135px;
+            background-color: white;
+            z-index: 3;
+        }
+
+        .second-hand {
+            height: 150px;
+            width: 2px;
+            /* 选定边框的角作圆角 */
+            border-top-right-radius: 100%;
+            border-top-left-radius: 100%;
+            background-color: red;
+            z-index: 2;
+        }
+
+        .point {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: rgb(168, 197, 209);
+            position: absolute;
+            z-index: 4;
+            box-shadow:
+                0 0 0 .1px #fff,
+                0 0 0 1px rgba(0, 0, 0, 0.1),
+                0 0 8px rgba(0, 0, 0, 0.4),
+                2px 5px 1px rgba(0, 0, 0, .5);
+        }
+    </style>
+
+    <script type="module">
+        import { main } from "./index.js";
+        main();
+    </script>
+</body>
+
+</html>
