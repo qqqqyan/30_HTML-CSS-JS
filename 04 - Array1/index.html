@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre style="font-size: 18px;">1.请按F12查看控制台输出结果
+2.若表格未显示，请刷新页面</pre>
+    <script>
+        const inventors = [
+            { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
+            { first: 'Isaac', last: 'Newton', year: 1643, passed: 1727 },
+            { first: 'Galileo', last: 'Galilei', year: 1564, passed: 1642 },
+            { first: 'Marie', last: 'Curie', year: 1867, passed: 1934 },
+            { first: 'Johannes', last: 'Kepler', year: 1571, passed: 1630 },
+            { first: 'Nicolaus', last: 'Copernicus', year: 1473, passed: 1543 },
+            { first: 'Max', last: 'Planck', year: 1858, passed: 1947 },
+            { first: 'Katherine', last: 'Blodgett', year: 1898, passed: 1979 },
+            { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
+            { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
+            { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
+            { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+        ];
+
+        // 1. Filter the list of inventors for those who were born in the 1500's
+        const sixteen_ct = inventors.filter(inventor =>
+            parseInt(inventor.year / 100) === 15);
+        console.log("1.十六世纪出生的发明家：")
+        console.table(sixteen_ct);
+
+        // 2. Give us an array of the inventors' first and last names
+        const fullName = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+        console.log("2.发明家姓名的数组:");
+        console.table(fullName);
+
+        // 3. Sort the inventors by birthdate, oldest to youngest
+        const year_sorted = inventors.sort((a, b) =>
+            b.year > a.year ? 1 : -1);
+        console.log("3.按发明家出生时间降序排序的数组:")
+        console.table(year_sorted);
+
+        // 4. How many years did all the inventors live
+        //    forEach()
+        let age_sum = 0;
+        inventors.forEach(inventor =>
+            age_sum += (inventor.passed - inventor.year));
+        console.log("4.所有发明家总计活着的年数:" + age_sum);
+        //    reduce()
+        const lived = inventors.reduce((sum, inventor) =>
+            sum += (inventor.passed - inventor.year), 0);
+        console.log("4.所有发明家总计活着的年数:" + lived);
+
+        // 5. Sort the inventors by years lived
+        inventors.sort((a, b) =>
+            (a.passed - a.year) > (b.passed - b.year) ? 1 : -1);
+        console.log("5.按发明家活着的年数升序排序的数组:");
+        console.table(year_sorted);
+
+        // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+        //    在Boulevards_in_Paris（巴黎的林荫大道）页面中，筛选出名字中包含'de'的大道
+        //    https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+        /* 
+            请将代码复制到页面的控制台中执行
+            const category = document.querySelector('.mw-category');
+            const a_nlist = category.querySelectorAll("a");
+            const a_list = Array.from(a_nlist);
+            const de_list = a_list
+                .map(a => a.textContent)
+                .filter(item => item.includes('de'));
+            console.log(de_list);
+        */
+        // #region  draft of Question 6
+        /*
+            const category = document.querySelector('.mw-category');
+            const a_nlist = category.querySelectorAll("a");
+            const a_list = Array.from(a_nlist);
+            const name_list = a_list.map(a => a.textContent);
+            const de_list = name_list.filter(item => item.includes('de'));
+            console.log(de_list);
+        */
+        // #endregion
+
+        // 7. Sort the people alphabetically by last name
+        const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry',
+            'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert',
+            'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester',
+            'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano',
+            'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle',
+            'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose',
+            'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert',
+            'Blair, Tony', 'Blake, William'];
+        const people_sorted = people.sort((a, b) =>
+            a.split(', ')[0] > b.split(', ')[0] ? 1 : -1);
+        console.log("7.按名的升序排序:");
+        console.table(people_sorted);
+
+        // 8. Sum up the instances of each of these
+        //    加总每个例子出现的次数
+        const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk',
+            'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck'];
+        let obj = {};
+        data.forEach(item => {
+            if (item in obj) obj[item]++;
+            else obj[item] = 1;
+        });
+        console.log("8.每个例子出现的次数：");
+        console.table(obj);
+
+    </script>
+</body>
+
+</html>
