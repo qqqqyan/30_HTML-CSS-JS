@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <pre style="font-size: 18px;">1.请按F12查看控制台输出结果
+2.若表格未显示，请刷新页面</pre>
+
+    <script type="module">
+        /*
+        针对 people 数组：
+            1. 是否有人超过 19 岁？
+            2. 是否所有人都是成年人？
+        针对 comments 数组：
+            3. 找到 ID 号为 823423 的评论
+            4. 删除 ID 号为 823423 的评论
+        */
+        const people = [
+            { name: 'Wes', year: 1988 },
+            { name: 'Kait', year: 1986 },
+            { name: 'Irv', year: 1970 },
+            { name: 'Lux', year: 2015 },
+        ];
+
+        const comments = [
+            { text: 'Love this!', id: 523423 },
+            { text: 'Super good', id: 823423 },
+            { text: 'You are the best', id: 2039842 },
+            { text: 'Ramen is my fav food ever', id: 123523 },
+            { text: 'Nice Nice Nice!', id: 542328 }
+        ];
+
+        // 1. 是否有人超过 19 岁？
+        const exist = people.some(p => (2022 - p.year) > 19 ? "Yes" : "No");
+        console.log(`是否有人超过 19 岁？
+>${exist}`);
+
+        // 2. 是否所有人都是成年人？
+        const all = people.every(p => (2022 - p.year) > 18 ? "Yes" : "No");
+        console.log(`是否所有人都是成年人？
+>${all}`);
+
+        // 3. 找到 ID 号为 823423 的评论
+        const cm_found = comments.find(cm => cm.id === 823423);
+        console.log(`找到 ID 号为 823423 的评论:
+>${cm_found.text}`);
+
+        // 4. 删除 ID 号为 823423 的评论
+        // 方法一：用filter筛选并生成新数组
+        const new_cm = comments.filter(cm => cm.id !== 823423);
+        console.log("删除 ID 号为 823423 后的新评论列表：")
+        console.table(new_cm);
+
+        // 方法二：获取该对象的index，根据索引删除，但直接更改了原数组
+        // findIndex能调用函数，indexOf不能
+        const cm_del = comments.findIndex(cm => cm.id === 823423);
+        comments.splice(cm_del, 1);
+        console.log("删除 ID 号为 823423 后的新评论列表：");
+        console.table(comments);
+    </script>
+
+
+</body>
+
+</html>

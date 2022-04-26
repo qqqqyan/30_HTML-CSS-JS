@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Amatic+SC' type='text/css'>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel panel1" date-box="1">
+            <div>HEY</div>
+            <div>lET'S</div>
+            <div>DANCE</div>
+        </div>
+        <div class="panel panel2" date-box="2">
+            <div>GIVE</div>
+            <div>TAKE</div>
+            <div>RECEIVE</div>
+        </div>
+        <div class="panel panel3" date-box="3">
+            <div>EXPERIENCE</div>
+            <div>IT</div>
+            <div>TODAY</div>
+        </div>
+        <div class="panel panel4" date-box="4">
+            <div>GIVE</div>
+            <div>ALL</div>
+            <div>YOU CAN</div>
+        </div>
+        <div class="panel panel5" date-box="5">
+            <div>LIFE</div>
+            <div>IN</div>
+            <div>MOTION</div>
+        </div>
+    </div>
+
+    <script type="module">
+
+        const panels = document.querySelectorAll('.panel');
+        let flag = false;
+        panels.forEach(panel => {
+            panel.addEventListener("click", function () {
+                flag = !flag;
+                panel.classList.toggle("enlarge", flag);
+                panel.classList.toggle("down", flag);
+                panel.classList.toggle("up", flag);
+            })
+        });
+    </script>
+</body>
+
+</html>

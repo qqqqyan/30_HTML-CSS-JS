@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p onClick="makeGreen()">点击此处</p>
+    <script>
+        const dogs = [
+            { name: 'Snickers', age: 2 },
+            { name: 'hugo', age: 8 }
+        ];
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        };
+        // 1. Regular(常规输出)
+        console.log("1. 常规输出");
+
+        // 2. Interpolated(字符替换)
+        //    特殊的：%o-object,%c-css,
+        console.log("2. 我的名字是%s，今年%f岁了", 'yy', 12);
+
+        // 3. Styled(为输出添加css样式)
+        console.log("3. %c我变大了，也变绿了", "font-size: 24px;color: green");
+
+        // 4、5、6是带有样式的输出
+        // 4. warning!
+        console.warn("4. 三角感叹号图标，淡黄色背景");
+
+        // 5. Error :|
+        console.error("5. 红叉图标，红色背景");
+
+        // 6. Info
+        console.info("6. 蓝色圆形感叹号图标");
+
+        // 7. Testing(测试是否相等，不相等才显示error)
+        console.assert(1 === 1, "7. 相等");
+        console.assert(1 === 0, "7. 不相等");
+        const p = document.querySelector('p');
+        console.assert(p.innerHTML.match("点"), "7. 没有这个字");
+        console.assert(p.innerHTML.match("笑"), "7. 没有这个字");
+
+
+        // 8. Viewing DOM Elements
+        console.log("8. 查看dom：");
+        console.log(p);
+        console.dir(p);
+
+        // 9. Grouping together(将dogs里的两个对象形成两个分组)
+        /* group()、groupCollapsed()与groupEnd()之间的内容
+           会自动分组，区别在于是否自动展开。*/
+        console.log("9. 分组：");
+        dogs.forEach(dog => {
+            console.group();
+            console.log(`${dog.name}`);
+            console.log(`${dog.age}`);
+            console.log(`${dog.name} 现在 ${dog.age} 岁了`);
+            console.groupEnd();
+        });
+
+        // 10. counting
+        console.log("10. 计算a、b、c个数，展开以查看结果");
+        console.groupCollapsed();
+        console.count("a");
+        console.count("a");
+        console.count("b");
+        console.count("c");
+        console.count("a");
+        console.groupEnd();
+
+        // 11. clearing(清空控制台)
+        // console.clear();
+
+    </script>
+
+</body>
+
+</html>

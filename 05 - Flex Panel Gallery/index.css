@@ -1,0 +1,120 @@
+/* 
+    >先做静态页面
+             对container进行五等分；
+             对div中的背景图片进行cover+居中；
+             使用外置字体；
+    >再做动态效果
+    宽度划分：1.点击后，被点击panel放大，flex值变化
+             2.变化时的div会有惯性特效【cubic-bezier】
+             3.再次点击，panel缩小，flex值变化，
+             4.使用Boolean值判断点击
+    字体变化：1.点击后，中间的字放大(用时0.5s，同panel放大的时间),
+               放大后(用的是延迟，0.7s)，从顶部和底部滑入字样【并且原本是不显示的】
+             2.变化时字体也有惯性特效
+             3.再次点击，中间的字放大复原（也是0.5s），复原后（也是延时0.7s），滑出字样
+*/
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.panel {
+    flex: 1;
+    transition: all 0.5s cubic-bezier(0.61, -0.19, 0.7, -0.11);
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+
+    font-family: 'Amatic SC', cursive;
+    font-size: 80px;
+    font-weight: 400;
+    color: white;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.72),
+        0 0 14px rgba(0, 0, 0, 0.45);
+}
+
+.panel div:nth-child(2) {
+    transition: all 0.5s cubic-bezier(0.61, -0.19, 0.7, -0.11);
+}
+
+.panel div:nth-child(1) {
+    transform: translateY(-400px);
+    transition: all 0.78s 0.7s;
+}
+
+.panel div:nth-child(3) {
+    transform: translateY(400px);
+    transition: all 0.78s 0.7s;
+}
+
+.enlarge {
+    flex: 5;
+}
+
+.panel.enlarge div:nth-child(2) {
+    font-size: 160px;
+}
+
+.panel.down>div:nth-child(1) {
+    transform: translateY(0px);
+}
+
+.panel.up>div:nth-child(3) {
+    transform: translateY(0px);
+}
+
+/* 
+    .panel.down>div:nth-child(1) {
+        transform: translateY(0px);}
+    .panel.up>div:nth-child(3) {
+        transform: translateY(0px);}
+    点击前，div设置了一个transform，
+    点击后，panel增加了一个类，
+    此时，panel同时具有了'.panel'和'.down' ,
+    因此为第一个div设置了另一个transform，
+    这个可以执行。
+*/
+
+/* 
+    .down {transform: translateY(0px);}
+    .up {transform: translateY(0px);}
+    点击前，div设置了一个transform，
+    点击后，div增加了一个类，这个类包含另一个transform，
+    但不再执行。为什么？
+    因为css优先级的问题，特殊性！specificity：
+    !important>内联样式>id>class>tag(前两个都不推荐使用)
+    因此.panel div:nth-child(1)大于.down
+*/
+
+.panel1 {
+    background-image: url("https://source.unsplash.com/UdgvzNom0Xs/1500x1500");
+}
+
+.panel2 {
+    background-image: url("https://source.unsplash.com/fHXP17AxOEk/1500x1500");
+}
+
+.panel3 {
+    background-image: url("https://source.unsplash.com/3IEZsaXmzzs/1500x1500");
+}
+
+.panel4 {
+    background-image: url("https://source.unsplash.com/tNDvFkxkBHo/1500x1500");
+}
+
+.panel5 {
+    background-image: url("https://source.unsplash.com/GEJxI_QRPwM/1500x1500");
+}
