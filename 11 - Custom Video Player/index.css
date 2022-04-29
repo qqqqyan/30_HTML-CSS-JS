@@ -1,0 +1,180 @@
+body {
+    margin: 0;
+    background-color: #9c805a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player {
+    width: 72%;
+    min-width: 400px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.video {
+    width: 100%;
+    height: 100%;
+}
+
+/* .player_bottom当鼠标悬浮时从底部滑出，
+   不悬浮时在video外隐藏，
+   当.player的高不确定时，如何在video外隐藏？
+   设置position：absolute后，选定相对的非static祖先节点，
+   bottom等才有参考坐标，
+   因此设定player的position为relative */
+.player_bottom {
+    transition: all 0.2s ease-out;
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+    z-index: 2;
+    transform: translateY(100%) translateY(-5px);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* 设置悬浮时的小手 */
+.player_bottom>* {
+    cursor: pointer;
+}
+
+.bottom_progress_slider {
+    cursor: vertical-text;
+}
+
+.player:hover .player_bottom {
+    transform: translateY(0);
+}
+
+.player:hover .bottom_progress_slider {
+    height: 12px;
+}
+
+.bottom_progress_slider {
+    width: 100%;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.bottom_progress_slider_juice {
+    width: 0.1px;
+    height: 100%;
+    background-color: #ffc600;
+    position: absolute;
+}
+
+/* 设置进度条样式 */
+/* 排列在一行内，随屏幕变化，设定flex值 */
+.bottom_controls {
+    width: 100%;
+    min-width: 400px;
+    align-items: center;
+    padding: 10px 0;
+    display: flex;
+}
+
+.bottom_controls_time {
+    flex: 1;
+    min-width: 80px;
+    font-size: 12px;
+    font-weight: 100;
+    color: white;
+    font-family: monospace;
+    margin-right: 5px;
+}
+
+label {
+    flex: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
+    transform: scale(0.83);
+}
+
+/* 设置btn底部透明_background:none */
+.btn {
+    flex: 1;
+    min-width: 49px;
+    border: 0px;
+    background: none;
+    font-size: 12px;
+    font-weight: 300;
+    color: white;
+    cursor: pointer;
+}
+
+.sm_btn {
+    flex: 0;
+    width: 20px;
+    height: 15px;
+    border: 0px;
+    background: none;
+    font-size: 12px;
+    color: white;
+    margin-left: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.slider {
+    flex: 10;
+}
+
+/* 设置slider样式 */
+/* 先清除样式*/
+input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+    width: 100%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+/* Chrome, Safari, and Edge Chromium */
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background: #ffc600;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -3.5px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1.3px;
+    border: 0.2px solid rgba(1, 1, 1, 0);
+}
+
+/* Firefox */
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 8.4px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+    background: #ffffff;
+    border-radius: 1.3px;
+    border: 0.2px solid rgba(1, 1, 1, 0);
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background: #ffc600;
+    cursor: pointer;
+}
