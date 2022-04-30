@@ -42,6 +42,11 @@ function progress_change(e) {
     // 获取元素的宽度
     // console.log(getComputedStyle(this, null)["width"]);
     // offset系列
+    /* 
+       https://eliux.github.io/javascript/common-errors/why-this-gets-undefined-inside-methods-in-javascript/
+       this的指向会在箭头函数、赋给一个变量、函数调用时没有依赖的对象，在严格模式下，this不会指向window，而指向undefined
+       const time_point = (e.offsetX / this.offsetWidth) * video.duration;
+    */
     const time_point = (e.offsetX / progress_slider.offsetWidth) * video.duration;
     video.currentTime = time_point;
 };
@@ -69,7 +74,13 @@ function main() {
     let mousedown = false;
     progress_slider.addEventListener("mousedown", () => mousedown = true);
     progress_slider.addEventListener("mouseup", () => mousedown = false);
-    progress_slider.addEventListener("mousemove", function (e) { if (mousedown) progress_change(e) });
+    progress_slider.addEventListener("mousemove", e => {
+        if (mousedown) {
+            progress_change(e);
+        }
+    });
+
+    // progress_slider.addEventListener("mousemove", function (e) { if (mousedown) progress_change(e) });
     volume_slider.addEventListener("change", volume_change);
     speed_slider.addEventListener("change", speed_change);
     forward_btn.addEventListener("click", forward);
