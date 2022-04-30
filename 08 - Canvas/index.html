@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="margin: 0;">
+    <!-- 100%和100vh不适用 -->
+    <canvas>
+        你的浏览器不支持html5-canvas;
+    </canvas>
+    <script>
+        const canvas = document.querySelector("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let ctx = canvas.getContext("2d");
+        let mousedown = false;
+        canvas.addEventListener("mousedown", () => mousedown = true);
+        canvas.addEventListener("mouseup", () => mousedown = false);
+        canvas.addEventListener("mouseout", () => mousedown = false);
+        canvas.addEventListener("mousemove", draw);
+
+
+        let direction = true;
+        let color = 1;
+        let lastX, lastY;
+        ctx.lineWidth = 50;
+        function draw(e) {
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+
+            if (mousedown) {
+                // color使用hsl彩虹色，从0-360：
+                ctx.strokeStyle = `hsl(${color++},70%,70%)`;
+                // lineWidth增长到某个数后逐渐减小，减小到某个数后逐渐增加：
+                if (ctx.lineWidth > 51 || ctx.lineWidth < 3) direction = !direction;
+                if (direction) ctx.lineWidth++;
+                else if (!direction) ctx.lineWidth--;
+
+                ctx.beginPath();
+                ctx.moveTo(e.offsetX, e.offsetY);
+                ctx.lineTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+            };
+            lastX = e.offsetX;
+            lastY = e.offsetY;
+            // ctx.arc(e.clientX, e.clientY, radius, 0, Math.PI * 2, true);
+        };
+
+    </script>
+</body>
+
+</html>
