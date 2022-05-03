@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <input class="container-head" placeholder="诗句 诗名 诗人"></input>
+        <div class="container-body">
+            <div class="item">输入词句，找一首诗</div>
+            <div class="item"></div>
+        </div>
+    </div>
+
+    <style>
+        /* 重新设置input样式 */
+        body {
+            margin: 0;
+            background-color: hsla(193, 30%, 64%, 0.78);
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            min-width: 500px;
+            width: 94%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 50px auto;
+            font-family: 'Kaiti', 'helvetica neue';
+        }
+
+        .container-head {
+            width: 100%;
+            height: 35px;
+            border: 10px solid #F7F7F7;
+            box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.19),
+                0 0 5px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            padding: 24px 0;
+            border-radius: 5px;
+            position: relative;
+            top: 10px;
+            z-index: 2;
+            font-size: 40px;
+            font-family: 'Kaiti', 'helvetica neue';
+            /* 取消聚焦时的黑框 */
+            outline: 0;
+        }
+
+        .container-body {
+            width: 85%;
+        }
+
+        .item {
+            width: 100%;
+            height: auto;
+            padding: 20px 8px;
+            background-color: white;
+            border-bottom: 1px solid #D8D8D8;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+            font-size: 20px;
+            text-align: center;
+        }
+
+        /* 设置左右两边倾斜效果 + 渐变阴影背景 */
+        .item:nth-child(odd) {
+            transform: perspective(100px) rotateX(-3deg) translateY(3px);
+            background: linear-gradient(to top, #ffffff 0%, #EFEFEF 100%);
+        }
+
+        .item:nth-child(even) {
+            transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+            background: linear-gradient(to bottom, #ffffff 0%, #EFEFEF 100%);
+        }
+
+        .item div:nth-child(2) {
+            font-size: 16px;
+            text-align: right;
+            color: #7c8e94;
+            position: absolute;
+            bottom: 1px;
+            right: 5px;
+        }
+
+        /* 将搜索的关键字变色 */
+        .bgc {
+            background-color: hsla(193, 37%, 64%, 0.65);
+        }
+    </style>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
