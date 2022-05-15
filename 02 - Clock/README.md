@@ -5,6 +5,8 @@
 <br/>
 
 # 02 CLock
+### 预览地址：https://qqqqyan.github.io/30_HTML-CSS-JS/02%20-%20Clock/index.html
+<br/>
 
 ## 1. 实现效果
 **模拟时钟**：页面展示时钟，其时针、分针、秒针都随时间变化。

@@ -5,6 +5,8 @@
 <br/>
 
 # 05 Flex Panel Gallery
+### 预览地址：https://qqqqyan.github.io/30_HTML-CSS-JS/05%20-%20Flex%20Panel%20Gallery/index.html
+<br/>
 
 ## 1. 实现效果
 **可伸缩的图片墙**：展示同等大小的图片，用户点击图片会使图片放大，字体放大，并从上下两端滑入字体，再次点击则恢复原样。
@@ -23,5 +25,5 @@ cubic-bezier();
 ```
 
 ## 4. 难点/细节
-1. div滑入屏幕
-2. css优先级问题
+1.div滑入屏幕<br/>
+2.css优先级问题

@@ -5,6 +5,8 @@
 <br/>
 
 # 11 Custom Video Player
+### 预览地址：https://qqqqyan.github.io/30_HTML-CSS-JS/11%20-%20Custom%20Video%20Player/index.html
+<br/>
 
 ## 1. 实现效果
 **定制播放器**：页面展示视频、进度条，当用户在视频上悬浮鼠标时，页面出现视频控制按钮，可通过点击按钮或滑动滚动条改变视频播放属性，如暂停、快进、放大音量、倍速播放等。

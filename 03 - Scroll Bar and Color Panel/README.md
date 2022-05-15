@@ -5,6 +5,8 @@
 <br/>
 
 # 03 Scroll Bar and Color Panel
+### 预览地址：https://qqqqyan.github.io/30_HTML-CSS-JS/03%20-%20Scroll%20Bar%20and%20Color%20Panel/index.html
+<br/>
 
 ## 1. 实现效果
 **更改图片样式**：页面展示滚动条、颜色选择器、图片，当用户滑动滚动条或点开颜色选择器选择颜色时，图片样式变化。
